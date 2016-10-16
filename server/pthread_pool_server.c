@@ -3,7 +3,7 @@
 int main(int argc,char *argv[])
 {
     if(argc!=4){
-        printf("port,q_num,p_num\n");
+        printf("port,queue_qum,pth_num\n");
         return -1;
     }
     signal_catch();
@@ -28,7 +28,7 @@ int main(int argc,char *argv[])
         perror("bind");
         return -1;
     }
-    listen(sfd,p_num);
+    listen(sfd,q_num);
     int new_fd;
     pqnode new_q;
     struct sockaddr_in client_addr_info;
