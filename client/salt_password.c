@@ -1,4 +1,4 @@
-#include "head.h"
+#include "salt_password.h"
 
 int	salt_password(char*user_salt,char*buf)
 {

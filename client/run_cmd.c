@@ -1,4 +1,4 @@
-#include "head.h"
+#include "run_cmd.h"
 
 int run_cmd(int cmd_num,int sfd,char* cmd_buf)
 {
@@ -20,3 +20,5 @@ int run_cmd(int cmd_num,int sfd,char* cmd_buf)
 	}
 	return 1;
 }
+
+

@@ -1,4 +1,4 @@
-#include "head.h"
+#include "send_recv_str.h"
 
 int send_str(int sfd,char * str)
 {

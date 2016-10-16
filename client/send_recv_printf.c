@@ -1,4 +1,4 @@
-#include "head.h"
+#include "send_recv_printf.h"
 
 int send_recv_printf(int sfd,char * cmd_buf)
 {

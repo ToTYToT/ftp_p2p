@@ -1,4 +1,4 @@
-#include "head.h"
+#include "recv_file.h"
 
 int recv_file(int sfd,char *cmd_buf)
 {

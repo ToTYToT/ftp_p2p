@@ -1,4 +1,4 @@
-#include "head.h"
+#include "gets_cmd.h"
 
 int gets_cmd(char *cmd_buf)
 {

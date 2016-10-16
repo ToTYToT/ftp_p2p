@@ -1,4 +1,4 @@
-#include "head.h"
+#include "send_recv_n.h"
 
 int send_n(int sfd,char*p,int len)
 {

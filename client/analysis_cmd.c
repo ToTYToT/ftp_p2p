@@ -1,4 +1,4 @@
-#include "head.h"
+#include "analysis_cmd.h"
 
 int analysis_cmd(char *cmd_buf)
 {
