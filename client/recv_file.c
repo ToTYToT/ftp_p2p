@@ -9,14 +9,17 @@ int recv_file(int sfd,char *cmd_buf)
     fd=open(cmd_buf+2,O_RDWR|O_CREAT|O_EXCL,0777);
     if(-1==fd){
 		fd=open(cmd_buf+2,O_RDWR);
-		recv_broken_file(sfd,fd,cmd_buf);
-        return -1;
+//		lseek(fd,0,SEEK_END);
+//		recv_broken_file(sfd,fd,cmd_buf);
+  //      return -1;
     }
 	char cmd_file[100]={0};
 	strcpy(cmd_file,cmd_buf);
 	data d;
 	memset(&d,0,sizeof(d));
-	the_ltoa(0L,cmd_buf+strlen(cmd_buf));
+	struct stat stat_buf;
+	fstat(fd,&stat_buf);
+	the_ltoa(stat_buf.st_size,cmd_buf+strlen(cmd_buf));
 	//printf("recv_file %s\n",cmd_buf);
 	strcpy(d.buf,cmd_buf);
 	d.len=strlen(d.buf);
@@ -35,23 +38,26 @@ int recv_file(int sfd,char *cmd_buf)
 		}
 		return -1;
 	}
-    while(1){
-		memset(d.buf,0,sizeof(d.buf));
-		d.len=0;
-		if(-1==recv_n(sfd,d.buf,d.len)){
-            close(fd);
-            return -1;
-		}
-        if(d.len>0){
-			if(-1==recv_n(sfd,d.buf,d.len)){
-                close(fd);
-                return -1;
-            }
-			if(-1==write(fd,d.buf,d.len))return -1;
-        }else{
-            break;
-        }
-	}
+	unsigned long the_file_size;
+	recv_n(sfd,(char*)the_file_size,sizeof(unsigned long));//接受文件大小
+    recv_data_package_file(sfd,fd,stat_buf.st_size,the_file_size);
+//	while(1){
+//		memset(d.buf,0,sizeof(d.buf));
+//		d.len=0;
+//		if(-1==recv_n(sfd,d.buf,d.len)){
+//            close(fd);
+//            return -1;
+//		}
+//        if(d.len>0){
+//			if(-1==recv_n(sfd,d.buf,d.len)){
+//                close(fd);
+//                return -1;
+//            }
+//			if(-1==write(fd,d.buf,d.len))return -1;
+//        }else{
+//            break;
+//        }
+//	}
 	printf("gets success\n");
 	close(fd);
 	return 0;

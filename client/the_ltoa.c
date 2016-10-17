@@ -1,6 +1,6 @@
 #include "head.h"
 
-char* the_ltoa(long num,char*str)//规范为10位，前位不足补零。
+char* the_ltoa(unsigned long num,char*str)//规范为10位，前位不足补零。
 {
 	char index[]="0123456789";	
 	int i=0,j;

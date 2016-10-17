@@ -7,5 +7,18 @@
 #ifndef _RECV_FILE_H
 #define _RECV_FILE_H
 
-
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
+#include "send_recv_n"
+#include "the_ltoa"
+#include "recv_broken_file"
+#include "send_recv_data_package"
+typedef struct{
+	int len;
+	char buf[1000];
+}data;
 #endif
