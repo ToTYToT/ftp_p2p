@@ -1,8 +1,9 @@
 #include "send_recv_str.h"
+#include <string.h>
 
 int send_str(int sfd,char * str)
 {
-    data d;
+    data d
     memset(&d,0,sizeof(d));
     strcpy(d.buf,str);
     d.len=strlen(d.buf);
